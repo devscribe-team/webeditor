@@ -1,0 +1,251 @@
+.callout {
+	margin: 16px 0;
+	padding: 16px;
+	border-radius: 8px;
+	border-left: 4px solid;
+	display: flex;
+	gap: 12px;
+	position: relative;
+}
+
+.callout-icon {
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+	margin-top: 2px;
+}
+
+.callout-content {
+	flex: 1;
+	min-width: 0;
+}
+
+.callout-header {
+	font-weight: 600;
+	margin-bottom: 4px;
+	font-size: 14px;
+}
+
+.callout-body {
+	color: #374151;
+	line-height: 1.5;
+}
+
+.callout-edit-button {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background: rgba(255, 255, 255, 0.8);
+	border: 1px solid #e5e7eb;
+	border-radius: 4px;
+	padding: 4px 8px;
+	font-size: 12px;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.callout:hover .callout-edit-button {
+	opacity: 1;
+}
+
+.callout-edit-button:hover {
+	background: #f9fafb;
+}
+
+/* Info callout */
+.callout.callout-info {
+	background-color: #eff6ff;
+	border-left-color: #3b82f6;
+}
+
+.callout.callout-info .callout-icon {
+	color: #3b82f6;
+}
+
+.callout.callout-info .callout-header {
+	color: #1e40af;
+}
+
+/* Warning callout */
+.callout.callout-warning {
+	background-color: #fefce8;
+	border-left-color: #eab308;
+}
+
+.callout.callout-warning .callout-icon {
+	color: #eab308;
+}
+
+.callout.callout-warning .callout-header {
+	color: #a16207;
+}
+
+/* Caution callout */
+.callout.callout-caution {
+	background-color: #fef2f2;
+	border-left-color: #ef4444;
+}
+
+.callout.callout-caution .callout-icon {
+	color: #ef4444;
+}
+
+.callout.callout-caution .callout-header {
+	color: #dc2626;
+}
+
+/* Important callout */
+.callout.callout-important {
+	background-color: #faf5ff;
+	border-left-color: #8b5cf6;
+}
+
+.callout.callout-important .callout-icon {
+	color: #8b5cf6;
+}
+
+.callout.callout-important .callout-header {
+	color: #7c3aed;
+}
+
+/* Tip callout */
+.callout.callout-tip {
+	background-color: #f0fdf4;
+	border-left-color: #22c55e;
+}
+
+.callout.callout-tip .callout-icon {
+	color: #22c55e;
+}
+
+.callout.callout-tip .callout-header {
+	color: #16a34a;
+}
+
+/* Modal styles */
+.callout-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.callout-modal {
+	background: white;
+	border-radius: 8px;
+	padding: 24px;
+	min-width: 400px;
+	max-width: 90vw;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.callout-modal-header {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 16px;
+	color: #111827;
+}
+
+.callout-modal-content {
+	margin-bottom: 24px;
+}
+
+.callout-modal-label {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 8px;
+	color: #374151;
+}
+
+.callout-type-options {
+	display: grid;
+	gap: 8px;
+}
+
+.callout-type-option {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px;
+	border: 1px solid #e5e7eb;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s;
+	background: white;
+	text-align: left;
+	width: 100%;
+}
+
+.callout-type-option:hover {
+	background: #f9fafb;
+	border-color: #d1d5db;
+}
+
+.callout-type-option.selected {
+	border-color: #3b82f6;
+	background: #eff6ff;
+}
+
+.callout-type-option-icon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+}
+
+.callout-type-option-content {
+	flex: 1;
+}
+
+.callout-type-option-name {
+	font-weight: 500;
+	margin-bottom: 2px;
+}
+
+.callout-type-option-description {
+	font-size: 12px;
+	color: #6b7280;
+}
+
+.callout-modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.callout-modal-button {
+	padding: 8px 16px;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	border: 1px solid;
+}
+
+.callout-modal-button.cancel {
+	background: white;
+	border-color: #e5e7eb;
+	color: #374151;
+}
+
+.callout-modal-button.cancel:hover {
+	background: #f9fafb;
+}
+
+.callout-modal-button.primary {
+	background: #3b82f6;
+	border-color: #3b82f6;
+	color: white;
+}
+
+.callout-modal-button.primary:hover {
+	background: #2563eb;
+}
