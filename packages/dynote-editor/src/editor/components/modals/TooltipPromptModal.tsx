@@ -115,7 +115,7 @@ export function TooltipPromptModal({
               <button
                 type="button"
                 onClick={onRemoveAction}
-                className="px-4 py-2 text-sm font-medium text-red-600 bg-transparent border border-red-600 rounded-md hover:bg-red-600 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                className="px-4 py-2 text-sm font-medium text-destructive bg-transparent border border-destructive rounded-md hover:bg-destructive hover:text-destructive-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-destructive/20"
               >
                 Remove Tooltip
               </button>

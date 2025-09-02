@@ -162,8 +162,8 @@ export const StepNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
       {/* Step indicator and line */}
       <div contentEditable={false} className="flex flex-col items-center flex-shrink-0">
         <button
-          className={`flex h-8 w-8 min-h-[2rem] min-w-[2rem] items-center justify-center rounded-full bg-gray-800 text-sm font-semibold text-white flex-shrink-0 ${
-            editable ? "cursor-pointer hover:cursor-pointer hover:bg-gray-700 transition-colors" : ""
+          className={`flex h-8 w-8 min-h-[2rem] min-w-[2rem] items-center justify-center rounded-full bg-secondary text-sm font-semibold text-secondary-foreground flex-shrink-0 ${
+            editable ? "cursor-pointer hover:cursor-pointer hover:bg-secondary/80 transition-colors" : ""
           }`}
           onClick={(e) => {
             if (!editable) return;

@@ -525,7 +525,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
           onKeyDown={onKeyDown}
           onClick={closeDialog}
           ref={dialogRef}
-          className="fixed m-0 p-1.5 drop-shadow-lg border border-zinc-800/70 rounded-lg bg-zinc-900/95 z-1000 backdrop:bg-transparent"
+          className="fixed m-0 p-1.5 drop-shadow-lg border border-border rounded-lg bg-popover/95 z-1000 backdrop:bg-transparent"
           style={{
             top: `${dialogPosition.top}px`,
             left: `${dialogPosition.left}px`,
@@ -539,7 +539,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
             autoFocus
             type="text"
             placeholder="Type to search components…"
-            className="w-full mb-2 px-2 py-1 rounded bg-zinc-900/80 text-white/80 border border-zinc-800/70 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-sm font-mono"
+            className="w-full mb-2 px-2 py-1 rounded bg-background text-foreground border border-border focus:outline-none focus:ring-1 focus:ring-ring text-sm font-mono"
             value={commandMenuQuery}
             onChange={(e) => {
               setCommandMenuQuery(e.target.value);
@@ -555,7 +555,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
               if ("separator" in command) {
                 return (
                   <li key={`separator-${index}`} className="my-2">
-                    <hr className="border-zinc-800/70" />
+                    <hr className="border-border" />
                   </li>
                 );
               }
@@ -570,8 +570,8 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
                       handleCommandWrapper(command);
                     }}
                     className={`flex flex-row items-center gap-3 outline-none px-2 py-1.5 rounded transition-colors duration-100 cursor-pointer w-full text-left font-mono text-sm
-                      ${isSelected ? "bg-zinc-800/80 text-white/90" : "text-white/70"}
-                      hover:bg-zinc-800/80 hover:text-white/90`}
+                      ${isSelected ? "bg-accent text-accent-foreground" : "text-muted-foreground"}
+                      hover:bg-accent hover:text-accent-foreground`}
                   >
                     <command.icon className="w-4 h-4" />
 
@@ -591,7 +591,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
           onKeyDown={onKeyDown}
           onClick={closeMarksDialog}
           ref={marksDialogRef}
-          className="fixed m-0 p-1.5 drop-shadow-lg border border-zinc-800/70 rounded-lg bg-zinc-900/95 z-1000 backdrop:bg-transparent"
+          className="fixed m-0 p-1.5 drop-shadow-lg border border-border rounded-lg bg-popover/95 z-1000 backdrop:bg-transparent"
           style={{
             top: `${marksDialogPosition.top}px`,
             left: `${marksDialogPosition.left}px`,
@@ -605,7 +605,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
             autoFocus
             type="text"
             placeholder="Type to search marks…"
-            className="w-full mb-2 px-2 py-1 rounded bg-zinc-900/80 text-white/80 border border-zinc-800/70 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-sm font-mono"
+            className="w-full mb-2 px-2 py-1 rounded bg-background text-foreground border border-border focus:outline-none focus:ring-1 focus:ring-ring text-sm font-mono"
             value={marksMenuQuery}
             onChange={(e) => {
               setMarksMenuQuery(e.target.value);
@@ -621,7 +621,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
               if ("separator" in command) {
                 return (
                   <li key={`separator-${index}`} className="my-2">
-                    <hr className="border-zinc-800/70" />
+                    <hr className="border-border" />
                   </li>
                 );
               }
@@ -636,8 +636,8 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
                       handleMarkCommand(command);
                     }}
                     className={`flex flex-row items-center gap-3 outline-none px-2 py-1.5 rounded transition-colors duration-100 cursor-pointer w-full text-left font-mono text-sm
-                      ${isSelected ? "bg-zinc-800/80 text-white/90" : "text-white/70"}
-                      hover:bg-zinc-800/80 hover:text-white/90`}
+                      ${isSelected ? "bg-accent text-accent-foreground" : "text-muted-foreground"}
+                      hover:bg-accent hover:text-accent-foreground`}
                   >
                     <command.icon className="w-4 h-4" />
 
@@ -708,7 +708,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
         {/* Command Hint is now handled by React */}
         {props.editable !== false && showCommandHint && (
           <span
-            className="text-zinc-400 dark:text-zinc-500 italic pointer-events-none select-none"
+            className="text-muted-foreground italic pointer-events-none select-none"
             style={{
               position: "absolute",
               top: hintPosition.top,

@@ -392,7 +392,7 @@ export const MermaidNodeView = React.forwardRef<HTMLDivElement, NodeViewComponen
   return (
     <div
       ref={ref}
-      className={`relative ${showBorder ? "border border-border" : ""} bg-background rounded-lg overflow-hidden mb-2`}
+      className={`relative ${showBorder ? "border border-border" : ""} bg-card rounded-lg overflow-hidden mb-2`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...props}

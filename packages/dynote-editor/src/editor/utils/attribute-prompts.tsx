@@ -33,7 +33,7 @@ function Modal({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="absolute inset-0" onClick={onClose} />
       <div
-        className="relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl shadow-2xl w-full max-w-md mx-4 animate-in fade-in-0 zoom-in-95"
+        className="relative bg-background border border-border rounded-xl shadow-2xl w-full max-w-md mx-4 animate-in fade-in-0 zoom-in-95"
         onClick={(e) => e.stopPropagation()}
       >
         {children}
@@ -87,9 +87,9 @@ export function AttributePromptDialog({
         }}
       >
         {/* Header */}
-        <div className="px-6 pt-6 pb-2 border-b border-zinc-200 dark:border-zinc-700">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">{config.title}</h2>
-          {config.description && <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{config.description}</p>}
+        <div className="px-6 pt-6 pb-2 border-b border-border">
+          <h2 className="text-xl font-semibold text-foreground">{config.title}</h2>
+          {config.description && <p className="text-sm text-muted-foreground mt-1">{config.description}</p>}
         </div>
         {/* Content */}
         <div className="px-6 py-4 flex flex-col gap-4 attribute-prompt-modal">
@@ -105,16 +105,16 @@ export function AttributePromptDialog({
           ))}
         </div>
         {/* Footer */}
-        <div className="px-6 pb-6 pt-2 flex justify-end gap-2 border-t border-zinc-200 dark:border-zinc-700">
+        <div className="px-6 pb-6 pt-2 flex justify-end gap-2 border-t border-border">
           <button
-            className="rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition cursor-pointer"
+            className="rounded-md border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition cursor-pointer"
             type="button"
             onClick={onClose}
           >
             Cancel
           </button>
           <button
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-blue-700 transition cursor-pointer"
+            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 transition cursor-pointer"
             type="submit"
           >
             Create
@@ -155,7 +155,7 @@ function AttributeFieldInput({
           value={value || ""}
           placeholder={field.placeholder}
           onChange={(e) => onChange(e.target.value)}
-          className={`${baseInput} ${error ? "border-red-500" : "border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"}`}
+          className={`${baseInput} ${error ? "border-destructive" : "border-border bg-background text-foreground"}`}
           autoFocus={autoFocus}
           onKeyDown={(e) => e.stopPropagation()}
         />
@@ -169,7 +169,7 @@ function AttributeFieldInput({
           value={value || ""}
           placeholder={field.placeholder}
           onChange={(e) => onChange(e.target.value ? parseFloat(e.target.value) : "")}
-          className={`${baseInput} ${error ? "border-red-500" : "border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"}`}
+          className={`${baseInput} ${error ? "border-destructive" : "border-border bg-background text-foreground"}`}
           autoFocus={autoFocus}
           onKeyDown={(e) => e.stopPropagation()}
         />
@@ -183,9 +183,9 @@ function AttributeFieldInput({
             type="checkbox"
             checked={!!value}
             onChange={(e) => onChange(e.target.checked)}
-            className="rounded border-zinc-300 dark:border-zinc-700 text-primary focus:ring-primary/40"
+            className="rounded border-border text-primary focus:ring-primary/40"
           />
-          <span className="text-sm text-zinc-700 dark:text-zinc-200">{field.label}</span>
+          <span className="text-sm text-foreground">{field.label}</span>
         </label>
       );
       break;
@@ -196,7 +196,7 @@ function AttributeFieldInput({
           value={value || ""}
           placeholder={field.placeholder}
           onChange={(e) => onChange(e.target.value)}
-          className={`${baseInput} ${error ? "border-red-500" : "border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"}`}
+          className={`${baseInput} ${error ? "border-destructive" : "border-border bg-background text-foreground"}`}
           autoFocus={autoFocus}
           onKeyDown={(e) => e.stopPropagation()}
         />
@@ -205,13 +205,13 @@ function AttributeFieldInput({
   return (
     <div className="flex flex-col gap-1">
       {field.type !== "boolean" && (
-        <label htmlFor={field.name} className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
+        <label htmlFor={field.name} className="text-sm font-medium text-foreground">
           {field.label}
-          {field.required && <span className="text-red-500 ml-1">*</span>}
+          {field.required && <span className="text-destructive ml-1">*</span>}
         </label>
       )}
       {input}
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+      {error && <p className="text-xs text-destructive mt-1">{error}</p>}
     </div>
   );
 }

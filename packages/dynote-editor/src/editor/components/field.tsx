@@ -250,7 +250,7 @@ export const FieldNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentP
   );
 
   return (
-    <div ref={ref} className="border border-border bg-background rounded-lg p-4 mb-4">
+    <div ref={ref} className="border border-border bg-card rounded-lg p-4 mb-4">
       <FieldEditModal
         open={modalOpen}
         initialName={name}
@@ -292,7 +292,7 @@ export const FieldNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentP
 
             <span
               contentEditable={false}
-              className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200 font-mono ${editable ? "cursor-pointer hover:bg-blue-200 transition-colors hover:cursor-pointer" : ""}`}
+              className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-primary/10 text-primary border border-primary/20 font-mono ${editable ? "cursor-pointer hover:bg-primary/20 transition-colors hover:cursor-pointer" : ""}`}
               onClick={(e) => {
                 if (!editable) return;
                 e.stopPropagation();
@@ -317,8 +317,8 @@ export const FieldNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentP
               contentEditable={false}
               className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${
                 required
-                  ? "bg-red-100 text-red-800 border border-red-200"
-                  : "bg-gray-100 text-gray-600 border border-gray-200"
+                  ? "bg-destructive/10 text-destructive border border-destructive/20"
+                  : "bg-muted text-muted-foreground border border-border"
               } ${editable ? "cursor-pointer hover:opacity-80 transition-opacity hover:cursor-pointer" : ""}`}
               onClick={(e) => {
                 if (!editable) return;

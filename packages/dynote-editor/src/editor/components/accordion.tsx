@@ -133,7 +133,7 @@ export const AccordionNodeView = React.forwardRef<HTMLDivElement, NodeViewCompon
   );
 
   return (
-    <div ref={ref} className="border border-border bg-background shadow-sm rounded-lg mb-2">
+    <div ref={ref} className="border border-border bg-card shadow-sm rounded-lg mb-2">
       <TitleDescriptionEditModal
         open={modalOpen && editField === "title"}
         initialTitle={title}
@@ -174,7 +174,7 @@ export const AccordionNodeView = React.forwardRef<HTMLDivElement, NodeViewCompon
           <div className="flex-1">
             <h3
               contentEditable={false}
-              className={`text-lg font-semibold text-card-foreground ${editable ? "cursor-pointer hover:cursor-pointer" : ""}`}
+              className={`text-lg font-semibold text-foreground ${editable ? "cursor-pointer hover:cursor-pointer" : ""}`}
               onClick={(e) => {
                 if (!editable) return;
                 e.stopPropagation();
@@ -229,7 +229,7 @@ export const AccordionNodeView = React.forwardRef<HTMLDivElement, NodeViewCompon
               {description}
             </p>
           )}
-          <div className="pt-2 prose prose-sm max-w-none text-card-foreground">
+          <div className="pt-2 prose prose-sm max-w-none text-foreground">
             <div {...props} />
           </div>
         </div>

@@ -409,7 +409,7 @@ export const CodeSnippetNodeView = React.forwardRef<HTMLDivElement, NodeViewComp
       ref={ref}
       {...props}
       contentEditable={false}
-      className={`relative rounded-lg overflow-hidden ${showBorder ? "border border-zinc-700/50" : ""}`}
+      className={`relative rounded-lg overflow-hidden ${showBorder ? "border border-border" : ""}`}
       onMouseEnter={() => setShowOptions(true)}
       onMouseLeave={() => !dropdownOpen && setShowOptions(false)}
     >
@@ -422,19 +422,19 @@ export const CodeSnippetNodeView = React.forwardRef<HTMLDivElement, NodeViewComp
         <DropdownMenu onOpenChange={(open) => setDropdownOpen(open)}>
           <DropdownMenuTrigger asChild>
             <button
-              className="bg-zinc-800/60 text-white/80 hover:cursor-pointer rounded px-2 py-0.5 pr-6 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-xs font-mono relative flex items-center"
+              className="bg-secondary/60 text-secondary-foreground hover:cursor-pointer rounded px-2 py-0.5 pr-6 focus:outline-none focus:ring-1 focus:ring-ring text-xs font-mono relative flex items-center"
               style={{ minWidth: "110px" }}
             >
               {language.toLowerCase()}
-              <ChevronDown className="absolute right-1.5 text-white/80 w-3 h-3" aria-hidden="true" />
+              <ChevronDown className="absolute right-1.5 text-secondary-foreground w-3 h-3" aria-hidden="true" />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-zinc-800/95 border-zinc-700">
+          <DropdownMenuContent className="bg-popover border-border">
             {Object.keys(languageExtensions).map((key) => (
               <DropdownMenuItem
                 key={key}
                 onClick={() => setLanguage(key)}
-                className="text-white/80 hover:bg-zinc-700/60 focus:bg-zinc-700/60 text-xs font-mono cursor-pointer"
+                className="text-popover-foreground hover:bg-accent focus:bg-accent text-xs font-mono cursor-pointer"
               >
                 {key}
               </DropdownMenuItem>
@@ -444,22 +444,22 @@ export const CodeSnippetNodeView = React.forwardRef<HTMLDivElement, NodeViewComp
         <DropdownMenu onOpenChange={(open) => setDropdownOpen(open)}>
           <DropdownMenuTrigger asChild>
             <button
-              className="bg-zinc-800/60 text-white/80 hover:cursor-pointer rounded px-2 py-0.5 pr-6 focus:outline-none focus:ring-1 focus:ring-blue-500/50 text-xs font-mono relative flex items-center"
+              className="bg-secondary/60 text-secondary-foreground hover:cursor-pointer rounded px-2 py-0.5 pr-6 focus:outline-none focus:ring-1 focus:ring-ring text-xs font-mono relative flex items-center"
               style={{ minWidth: "120px" }}
             >
               {theme
                 .replace(/([A-Z])/g, " $1")
                 .replace(/^./, (str) => str.toUpperCase())
                 .toLowerCase()}
-              <ChevronDown className="absolute right-1.5 text-white/80 w-3 h-3" aria-hidden="true" />
+              <ChevronDown className="absolute right-1.5 text-secondary-foreground w-3 h-3" aria-hidden="true" />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-zinc-800/95 border-zinc-700">
+          <DropdownMenuContent className="bg-popover border-border">
             {Object.keys(themeExtensions).map((key) => (
               <DropdownMenuItem
                 key={key}
                 onClick={() => setTheme(key as keyof typeof themeExtensions)}
-                className="text-white/80 hover:bg-zinc-700/60 focus:bg-zinc-700/60 text-xs font-mono cursor-pointer"
+                className="text-popover-foreground hover:bg-accent focus:bg-accent text-xs font-mono cursor-pointer"
               >
                 {key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
               </DropdownMenuItem>
@@ -468,7 +468,7 @@ export const CodeSnippetNodeView = React.forwardRef<HTMLDivElement, NodeViewComp
         </DropdownMenu>
         <button
           onClick={() => setShowBorder(!showBorder)}
-          className="flex items-center outline-none select-none hover:cursor-pointer gap-1 bg-zinc-800/60 text-white/80 rounded px-2 py-0.5 hover:bg-zinc-700/60 transition-colors text-xs font-mono"
+          className="flex items-center outline-none select-none hover:cursor-pointer gap-1 bg-secondary/60 text-secondary-foreground rounded px-2 py-0.5 hover:bg-secondary/80 transition-colors text-xs font-mono"
           title={showBorder ? "Hide border" : "Show border"}
         >
           {showBorder ? (
@@ -479,7 +479,7 @@ export const CodeSnippetNodeView = React.forwardRef<HTMLDivElement, NodeViewComp
         </button>
         <button
           onClick={handleCopy}
-          className="flex items-center outline-none select-none hover:cursor-pointer gap-1 bg-zinc-800/60 text-white/80 rounded px-2 py-0.5 hover:bg-zinc-700/60 transition-colors text-xs font-mono"
+          className="flex items-center outline-none select-none hover:cursor-pointer gap-1 bg-secondary/60 text-secondary-foreground rounded px-2 py-0.5 hover:bg-secondary/80 transition-colors text-xs font-mono"
           title="Copy code"
         >
           {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}

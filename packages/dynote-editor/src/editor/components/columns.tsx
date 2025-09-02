@@ -137,7 +137,7 @@ export const ColumnsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponen
       data-columns=""
       // @ts-expect-error colClasses is unknown
       className={`relative grid ${colClasses[cols] || colClasses[2]} ${gapClasses[gap]} w-full my-6 ${
-        editable ? "border-dotted border border-zinc-700/50 rounded-lg p-4" : ""
+        editable ? "border-dotted border border-border rounded-lg p-4" : ""
       }`}
       onMouseEnter={() => editable && setShowOptions(true)}
       onMouseLeave={() => setShowOptions(false)}
@@ -153,18 +153,18 @@ export const ColumnsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponen
           <button
             onClick={handleDecreaseCols}
             disabled={cols <= 1}
-            className="flex items-center outline-none select-none hover:cursor-pointer bg-zinc-800/60 text-white/80 rounded px-2 py-0.5 hover:bg-zinc-700/60 transition-colors text-xs font-mono disabled:text-white/40 disabled:cursor-not-allowed disabled:hover:bg-zinc-800/60"
+            className="flex items-center outline-none select-none hover:cursor-pointer bg-secondary/60 text-secondary-foreground rounded px-2 py-0.5 hover:bg-secondary/80 transition-colors text-xs font-mono disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-secondary/60"
             title="Remove column"
           >
             <Minus className="w-3 h-3" />
           </button>
-          <span className="bg-zinc-800/60 text-white/80 text-xs font-mono px-2 py-0.5 rounded min-w-[1.5rem] text-center">
+          <span className="bg-secondary/60 text-secondary-foreground text-xs font-mono px-2 py-0.5 rounded min-w-[1.5rem] text-center">
             {cols}
           </span>
           <button
             onClick={handleIncreaseCols}
             disabled={cols >= 4}
-            className="flex items-center outline-none select-none hover:cursor-pointer bg-zinc-800/60 text-white/80 rounded px-2 py-0.5 hover:bg-zinc-700/60 transition-colors text-xs font-mono disabled:text-white/40 disabled:cursor-not-allowed disabled:hover:bg-zinc-800/60"
+            className="flex items-center outline-none select-none hover:cursor-pointer bg-secondary/60 text-secondary-foreground rounded px-2 py-0.5 hover:bg-secondary/80 transition-colors text-xs font-mono disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-secondary/60"
             title="Add column"
           >
             <Plus className="w-3 h-3" />
@@ -176,7 +176,7 @@ export const ColumnsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponen
           {Array.from({ length: cols }, (_, i) => (
             <div
               key={i}
-              className="absolute border border-dashed border-zinc-600/30 rounded"
+              className="absolute border border-dashed border-border/30 rounded"
               style={{
                 left: `${(100 / cols) * i}%`,
                 width: `${100 / cols}%`,

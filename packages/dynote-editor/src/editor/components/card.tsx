@@ -308,7 +308,7 @@ function VerticalLayout({
 
 // Styling utilities
 const getCardClasses = (horizontal: boolean, isClickable: boolean) => {
-  const baseClasses = `relative flex ${horizontal ? "flex-col sm:flex-row" : "flex-col"} border border-border bg-background shadow-sm rounded-lg w-full text-card-foreground h-fit overflow-hidden mb-2`;
+  const baseClasses = `relative flex ${horizontal ? "flex-col sm:flex-row" : "flex-col"} border border-border bg-card shadow-sm rounded-lg w-full text-card-foreground h-fit overflow-hidden mb-2`;
 
   const hoverClasses = isClickable
     ? "cursor-pointer transition-transform duration-300 ease-out hover:shadow-lg hover:scale-[1.01] hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary"
@@ -530,7 +530,7 @@ export const CardNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
               e.stopPropagation();
               toggleLayout();
             }}
-            className="flex items-center outline-none select-none hover:cursor-pointer gap-1 bg-zinc-800/60 text-white/80 rounded px-2 py-0.5 hover:bg-zinc-700/60 transition-colors text-xs font-mono"
+            className="flex items-center outline-none select-none hover:cursor-pointer gap-1 bg-secondary/60 text-secondary-foreground rounded px-2 py-0.5 hover:bg-secondary/80 transition-colors text-xs font-mono"
             title={horizontal ? "Switch to vertical layout" : "Switch to horizontal layout"}
             contentEditable={false}
           >

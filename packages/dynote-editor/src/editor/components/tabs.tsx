@@ -306,7 +306,7 @@ export const TabsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
   });
 
   return (
-    <div className="border border-border bg-background shadow-sm rounded-lg mb-2">
+    <div className="border border-border bg-card shadow-sm rounded-lg mb-2">
       <TitleDescriptionEditModal
         open={modalOpen && editingTabIndex !== null}
         initialTitle={editingTabIndex !== null ? tabNames[editingTabIndex] || "" : ""}
@@ -337,9 +337,9 @@ export const TabsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
               key={tab}
               className={`
                 ${isFirst ? "rounded-tl-lg" : ""}
-                ${isActive ? "bg-zinc-800/60 text-white/90" : "text-white/70"}
-                hover:bg-zinc-700/60 hover:text-white/90
-                px-4 py-2 border-b-2 border-transparent hover:border-zinc-500/50
+                ${isActive ? "bg-secondary/60 text-secondary-foreground" : "text-muted-foreground"}
+                hover:bg-secondary/60 hover:text-secondary-foreground
+                px-4 py-2 border-b-2 border-transparent hover:border-border
                 transition-colors duration-100 hover:cursor-pointer
                 min-w-0 flex-1
                 flex items-center justify-between
@@ -377,7 +377,7 @@ export const TabsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
                     e.stopPropagation();
                     deleteTab(i);
                   }}
-                  className="ml-2 p-1 text-white/50 hover:text-red-400 hover:bg-red-900/20 rounded transition-colors duration-100 hover:cursor-pointer"
+                  className="ml-2 p-1 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors duration-100 hover:cursor-pointer"
                   title="Delete tab"
                 >
                   <X className="w-3 h-3" />
@@ -391,7 +391,7 @@ export const TabsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
         <button
           type="button"
           onClick={() => addNewTab()}
-          className="px-3 py-2 border-b-2 border-transparent text-white/50 hover:text-white/90 hover:bg-zinc-700/60 transition-colors duration-100 hover:cursor-pointer rounded-tr-lg flex items-center justify-center"
+          className="px-3 py-2 border-b-2 border-transparent text-muted-foreground hover:text-secondary-foreground hover:bg-secondary/60 transition-colors duration-100 hover:cursor-pointer rounded-tr-lg flex items-center justify-center"
           title="Add new tab"
         >
           <Plus className="w-4 h-4" />
