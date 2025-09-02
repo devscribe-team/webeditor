@@ -1,48 +1,43 @@
 import { ProseMirror, ProseMirrorDoc, reactKeys, useEditorEffect } from "@handlewithcare/react-prosemirror";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AlertTriangle, Code, Hash, Info, List, OctagonAlert, Quote, Type } from "lucide-react";
-import { history, undo, redo } from "prosemirror-history";
-import { EditorState, Selection } from "prosemirror-state";
+import { baseKeymap } from "prosemirror-commands";
+import { history, redo, undo } from "prosemirror-history";
+import { keymap } from "prosemirror-keymap";
+import { DOMParser, DOMSerializer, Fragment, Node } from "prosemirror-model";
+import { EditorState, Plugin, Selection } from "prosemirror-state";
 import type { EditorView } from "prosemirror-view";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { DOMSerializer, DOMParser, Fragment, Slice, Node } from "prosemirror-model";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { EditorEditableProvider } from "./editorEditableContext";
-import { CardNodeView, insertCard } from "./components/card";
-import { TabsNodeView, insertTabs } from "./components/tabs";
-import { CalloutNodeView, insertCallout } from "./components/callout";
-import { CodeSnippetNodeView, insertCodeSnippet } from "./components/code-snippet";
-import { BreakNodeView, insertBreak } from "./components/break";
-import { BadgeNodeView, insertBadge } from "./components/badge";
-import { FooNodeView, insertFoo } from "./components/foo";
-import { IconNodeView, insertIcon } from "./components/icon";
-import { MermaidNodeView, insertMermaid } from "./components/mermaid";
-import { FieldNodeView, insertField } from "./components/field";
-import { FrameNodeView, insertFrame } from "./components/frame";
-import { StepNodeView, insertStep } from "./components/steps";
 import { AccordionNodeView, insertAccordion } from "./components/accordion";
-import { ColumnsNodeView, ColumnNodeView, insertColumns } from "./components/columns";
+import { BadgeNodeView, insertBadge } from "./components/badge";
+import { BreakNodeView, insertBreak } from "./components/break";
+import { CalloutNodeView, insertCallout } from "./components/callout";
+import { CardNodeView, insertCard } from "./components/card";
+import { CodeSnippetNodeView, insertCodeSnippet } from "./components/code-snippet";
+import { ColumnNodeView, ColumnsNodeView, insertColumns } from "./components/columns";
+import { FieldNodeView, insertField } from "./components/field";
+import { FooNodeView, insertFoo } from "./components/foo";
+import { FrameNodeView, insertFrame } from "./components/frame";
+import { IconNodeView, insertIcon } from "./components/icon";
+import { insertMermaid, MermaidNodeView } from "./components/mermaid";
+import { TooltipPromptModal } from "./components/modals/TooltipPromptModal";
+import { insertStep, StepNodeView } from "./components/steps";
+import { insertTabs, TabsNodeView } from "./components/tabs";
+import { EditorEditableProvider } from "./editorEditableContext";
 import { keymapPlugin } from "./keymap";
 import { inputPlugin } from "./markdown";
 import { schema } from "./schema";
-import { commandMenuSetup, type Command, isComponentCommand } from "./utils/command-system";
+import { type AttributePromptConfig, AttributePromptDialog } from "./utils/attribute-prompts";
+import { type Command, commandMenuSetup, isComponentCommand } from "./utils/command-system";
 import {
-  marksMenuSetup,
-  type MarkCommand,
-  isSimpleMarkCommand,
-  isTooltipMarkCommand,
-  executeTooltipMark,
-  hasTextSelection,
+    executeTooltipMark,
+    hasTextSelection,
+    isSimpleMarkCommand,
+    isTooltipMarkCommand,
+    type MarkCommand,
+    marksMenuSetup,
 } from "./utils/marks-system";
-import { AttributePromptDialog, type AttributePromptConfig } from "./utils/attribute-prompts";
-import { TooltipPromptModal } from "./components/modals/TooltipPromptModal";
 import { createTooltipClickPlugin, removeTooltipMark, updateTooltipMark } from "./utils/tooltip-click-plugin";
-import { Plugin } from "prosemirror-state";
-
 import "./index.css";
 import { preprocessMarkdownToHTML } from "./preprocessMarkdown";
-import { keymap } from "prosemirror-keymap";
-import { baseKeymap } from "prosemirror-commands";
 
 function proseMirrorToHTML(doc: Node) {
   const serializer = DOMSerializer.fromSchema(schema);
@@ -156,11 +151,8 @@ export function ProseMirrorEditor(props: { value?: string; editable?: boolean; o
   const [showCommandHint, setShowCommandHint] = useState(false);
   const [hintPosition, setHintPosition] = useState({ top: 0, left: 0 });
 
-  // Attribute prompt dialog state
   const [attributePromptOpen, setAttributePromptOpen] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [attributePromptConfig, setAttributePromptConfig] = useState<AttributePromptConfig | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [attributePromptValues, setAttributePromptValues] = useState<Record<string, any>>({});
   const [attributePromptErrors, setAttributePromptErrors] = useState<Record<string, string>>({});
   const [pendingAttributeCommand, setPendingAttributeCommand] = useState<Command | null>(null);
@@ -202,8 +194,7 @@ export function ProseMirrorEditor(props: { value?: string; editable?: boolean; o
             });
             setShowCommandHint(true);
             return;
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          } catch (error) {
+          } catch {
             // ignore
           }
         }
