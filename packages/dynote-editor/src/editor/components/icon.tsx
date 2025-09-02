@@ -50,7 +50,7 @@ export const IconNodeView = React.forwardRef<HTMLSpanElement, NodeViewComponentP
   const editable = useEditorEditable();
 
   const updateIcon = useEditorEventCallback(
-    (view, { icon: newIcon, size: newSize }: { icon: string; size: number }) => {
+    (view, { icon: newIcon, size: newSize }: { icon: string; size?: number }) => {
       const { getPos, node } = nodeProps;
       if (typeof getPos !== "function") {
         console.error("getPos is not a function");
@@ -65,7 +65,7 @@ export const IconNodeView = React.forwardRef<HTMLSpanElement, NodeViewComponentP
       tr.setNodeMarkup(pos, undefined, {
         ...node.attrs,
         name: newIcon,
-        size: newSize,
+        size: newSize ?? node.attrs.size,
       });
       view.dispatch(tr);
       setModalOpen(false);

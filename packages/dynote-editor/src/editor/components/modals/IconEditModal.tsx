@@ -69,6 +69,7 @@ export const IconEditModal: React.FC<IconEditModalProps> = ({
     if (showSize) {
       result.size = parseInt(size);
     }
+
     onSubmitAction(result);
   }
 

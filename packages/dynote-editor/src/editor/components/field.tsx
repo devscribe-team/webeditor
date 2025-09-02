@@ -246,8 +246,7 @@ export const FieldNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentP
       view.dispatch(tr);
       setModalOpen(false);
       setEditField(null);
-    },
-    [nodeProps],
+    }
   );
 
   return (

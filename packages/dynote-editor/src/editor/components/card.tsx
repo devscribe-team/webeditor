@@ -422,8 +422,7 @@ export const CardNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
         horizontal: !node.attrs.horizontal,
       });
       view.dispatch(tr);
-    },
-    [nodeProps],
+    }
   );
 
   // Render content based on layout, with separately editable title/icon
