@@ -11,19 +11,22 @@
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
 		},
-		"./styles": "./dist/index.css"
+		"./styles": "./dist/index.css",
+		"./tailwind": "./dist/tailwind.css"
 	},
 	"files": [
 		"dist",
 		"README.md"
 	],
 	"scripts": {
-		"build": "bunx tsdown",
+		"build:css": "tailwindcss -i ./src/styles.css -o ./dist/tailwind.css --minify",
+		"build": "bunx tsdown && bun build:css",
 		"prepublishOnly": "bun run build"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
+		"react-dom": ">=18.0.0",
+		"tailwindcss": ">=4.0.0"
 	},
 	"dependencies": {
 		"@codemirror/lang-css": "^6.3.1",
@@ -72,16 +75,17 @@
 		"radix-ui": "^1.4.3",
 		"react-reconciler": "^0.32.0",
 		"sonner": "^2.0.7",
-		"tailwind-merge": "^3.3.1",
-		"tailwindcss": "^4.1.12"
+		"tailwind-merge": "^3.3.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
+		"@tailwindcss/cli": "^4.1.12",
 		"@types/bun": "^1.2.21",
 		"@types/ms": "^2.1.0",
 		"@types/node": "^24.3.0",
 		"@types/react": "^18.2.79",
 		"@types/react-dom": "^18.2.23",
+		"tailwindcss": "^4.1.12",
 		"tsdown": "^0.14.2",
 		"typescript": "^5.4.5"
 	},

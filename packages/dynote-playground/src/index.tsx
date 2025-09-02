@@ -1,19 +1,22 @@
-import { serve } from "bun";
-import index from "./index.html";
+/* @refresh reload */
+import { DynoteEditor } from '@dynote/editor';
 
-const server = serve({
-  routes: {
-    // Serve index.html for all unmatched routes.
-    "/*": index,
-  },
+function App() {
+  return (
+    <div className="p-8 max-w-4xl mx-auto">
+      <DynoteEditor />
+    </div>
+  );
+}
 
-  development: process.env.NODE_ENV !== "production" && {
-    // Enable browser hot reloading in development
-    hmr: true,
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import '@dynote/editor/styles';
+import '@dynote/editor/tailwind';
 
-    // Echo console logs from the browser to the server
-    console: true,
-  },
-});
-
-console.log(`🚀 Server running at http://localhost:${server.port}`);
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
