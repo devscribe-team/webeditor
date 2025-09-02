@@ -488,6 +488,7 @@ export const CodeSnippetNodeView = React.forwardRef<HTMLDivElement, NodeViewComp
       </div>
       <CodeMirror
         ref={(instance) => {
+          // @ts-ignore
           codeMirrorRef.current = instance;
           // If this is a new snippet that should focus, focus immediately
           if (shouldFocus && instance?.view && editable) {

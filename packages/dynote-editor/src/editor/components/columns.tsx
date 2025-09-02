@@ -215,7 +215,7 @@ export const addColumnsRule = new InputRule(/^<columns(?:\s+([^>]+))?(?:\s*\/>|\
 
   // Create a fragment with both columns and paragraph
   const fragment = Fragment.from([columns, emptyParagraph]);
-  tr.replaceRangeWith(start, end, fragment);
+  tr.replaceWith(start, end, fragment);
 
   const newPos = start + 2; // Into first column's paragraph
   // @ts-expect-error tr.selection.constructor.near is unknown

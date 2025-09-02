@@ -13,17 +13,17 @@ function escapeHtml(text: string): string {
 
 const renderer = new marked.Renderer();
 
-renderer.code = ({ lang, text }) => {
+renderer.code = (code: string, lang?: string) => {
   if (lang?.includes("#")) {
     const [language, title] = lang.split("#");
-    return `<pre><code title="${escapeHtml(title)}" language="${escapeHtml(language)}">${text}</code></pre>`;
+    return `<pre><code title="${escapeHtml(title)}" language="${escapeHtml(language)}">${code}</code></pre>`;
   }
 
   if (lang) {
-    return `<pre><code language="${escapeHtml(lang)}">${text}</code></pre>`;
+    return `<pre><code language="${escapeHtml(lang)}">${code}</code></pre>`;
   }
 
-  return `<pre><code>${text}</code></pre>`;
+  return `<pre><code>${code}</code></pre>`;
 };
 
 export function preprocessMarkdownToHTML(markdown: string): string {
