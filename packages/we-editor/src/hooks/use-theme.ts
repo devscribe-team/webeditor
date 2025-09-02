@@ -15,7 +15,7 @@ export function useTheme(): {
     }
 
     // First check localStorage for user preference
-    const savedTheme = localStorage.getItem('dynote-theme') as Theme | null;
+    const savedTheme = localStorage.getItem('webeditor-theme') as Theme | null;
     if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'auto')) {
       return savedTheme;
     }
@@ -40,7 +40,7 @@ export function useTheme(): {
     setThemeState(newTheme);
 
     if (typeof window !== 'undefined') {
-      localStorage.setItem('dynote-theme', newTheme);
+      localStorage.setItem('webeditor-theme', newTheme);
     }
   };
 

@@ -1,4 +1,4 @@
-# dynote
+# @devscribe/webeditor
 
 A completely dynamic, JSX-based rich text editor powered by [ProseMirror](https://prosemirror.net/).
 
@@ -17,11 +17,11 @@ The alternative to BlockNote and TipTap you've been waiting for.
 ### Basic Editor
 
 ```tsx
-import { DynoteEditor } from '@dynote/editor';
-import '@dynote/editor/styles';
+import { WebEditor } from '@devscribe/webeditor';
+import '@devscribe/webeditor/styles';
 
 function App() {
-  return <DynoteEditor />;
+  return <WebEditor />;
 }
 ```
 
@@ -44,7 +44,7 @@ function App() {
         <button onClick={() => setTheme('auto')}>Auto</button>
         <span>Current: {theme} (resolved: {resolvedTheme})</span>
       </div>
-      <DynoteEditor />
+      <WebEditor />
     </div>
   );
 }

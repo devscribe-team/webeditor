@@ -1,5 +1,5 @@
 {
-	"name": "@dynote/editor",
+	"name": "@we/editor",
 	"version": "0.1.0",
 	"description": "A rich text editor library for React with markdown support and custom components",
 	"author": "",

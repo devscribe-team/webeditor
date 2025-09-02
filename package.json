@@ -1,10 +1,9 @@
 {
-	"name": "dynote",
+	"name": "we",
 	"scripts": {
-		"playground:dev": "bun run --filter ./packages/dynote-playground dev",
-		"editor:build": "bun run --filter ./packages/dynote-editor build",
-		"editor:watch": "bun run --filter ./packages/dynote-editor watch",
-		"build": "bun run --filter './packages/*' build",
+		"editor:build": "bun run --filter ./packages/we-editor build",
+		"playground:dev": "bun run --filter ./packages/we-playground dev",
+		"playground:build": "bun run --filter './packages/playground' build",
 		"format": "biome format --write",
 		"lint": "biome lint"
 	},

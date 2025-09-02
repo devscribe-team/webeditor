@@ -66,7 +66,7 @@ function mdxLikeToProseMirror(markdown: string) {
   return htmlToProseMirror(html);
 }
 
-export function DynoteEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
+export function WebEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
   // Initialize theme detection and management - automatically detects browser's preferred theme
   // and applies dark/light mode classes to the document root
   const { theme, resolvedTheme } = useTheme();

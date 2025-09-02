@@ -1,5 +1,5 @@
 {
-  "name": "@dynote/playground",
+  "name": "@we/playground",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dynote/editor": "workspace:*",
+    "@we/editor": "workspace:*",
     "@tailwindcss/vite": "^4.1.12",
     "react": "^19.1.1",
     "tailwindcss": "^4.1.12"

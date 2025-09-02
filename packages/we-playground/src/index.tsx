@@ -1,5 +1,5 @@
 /* @refresh reload */
-import { DynoteEditor, useTheme } from '@dynote/editor';
+import { WebEditor, useTheme } from '@we/editor';
 
 function App() {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -62,7 +62,7 @@ function App() {
             )}
           </p>
         </div>
-        <DynoteEditor />
+        <WebEditor />
       </div>
     </div>
   );
@@ -71,7 +71,7 @@ function App() {
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import '@dynote/editor/styles';
+import '@we/editor/styles';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
