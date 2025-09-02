@@ -18,5 +18,7 @@ export const EditorEditableProvider: React.FC<{
   editable: boolean;
   children: React.ReactNode;
 }> = ({ editable, children }) => (
-  <EditorEditableContext.Provider value={editable}>{children}</EditorEditableContext.Provider>
+  <EditorEditableContext.Provider value={editable}>
+    {children}
+  </EditorEditableContext.Provider>
 );
