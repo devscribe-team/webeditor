@@ -44,7 +44,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: "./packages/we-editor/dist"
+                  path: "./packages/playground/dist"
 
     deploy:
         environment:

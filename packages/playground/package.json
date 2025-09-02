@@ -1,5 +1,5 @@
 {
-  "name": "@we/playground",
+  "name": "@devscribe/playground",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@we/editor": "workspace:*",
+    "@devscribe/webeditor": "0.1.0",
     "@tailwindcss/vite": "^4.1.12",
     "react": "^19.1.1",
     "tailwindcss": "^4.1.12"

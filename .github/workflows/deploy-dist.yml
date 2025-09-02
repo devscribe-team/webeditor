@@ -27,13 +27,10 @@ jobs:
             - name: Build editor
               run: bun run editor:build
 
-            - name: Build playground
-              run: bun run playground:build
-
             - name: Deploy to dist branch
               uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./dist
+                  publish_dir: ./packages/webeditor/dist
                   publish_branch: dist
                   force_orphan: true

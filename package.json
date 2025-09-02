@@ -1,9 +1,9 @@
 {
-	"name": "we",
+	"name": "devscribe",
 	"scripts": {
-		"editor:build": "bun run --filter ./packages/we-editor build",
-		"playground:dev": "bun run --filter ./packages/we-playground dev",
-		"playground:build": "bun run --filter './packages/we-playground' build",
+		"editor:build": "npm run --workspace ./packages/webeditor build",
+		"playground:dev": "npm run --workspace ./packages/playground dev",
+		"playground:build": "npm run --workspace './packages/playground' build",
 		"format": "biome format --write",
 		"lint": "biome lint"
 	},
