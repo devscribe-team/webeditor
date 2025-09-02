@@ -11,15 +11,14 @@
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
 		},
-		"./styles": "./dist/index.css",
-		"./tailwind": "./dist/tailwind.css"
+		"./styles": "./dist/index.css"
 	},
 	"files": [
 		"dist",
 		"README.md"
 	],
 	"scripts": {
-		"build:css": "tailwindcss -i ./src/styles.css -o ./dist/tailwind.css --minify",
+		"build:css": "tailwindcss -i ./src/styles.css -o ./dist/tailwind.tmp.css --minify && cat ./dist/index.css ./dist/tailwind.tmp.css > ./dist/index.combined.css && mv ./dist/index.combined.css ./dist/index.css && rm ./dist/tailwind.tmp.css",
 		"build": "bunx tsdown && bun build:css",
 		"prepublishOnly": "bun run build"
 	},
