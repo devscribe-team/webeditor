@@ -69,7 +69,7 @@ function mdxLikeToProseMirror(markdown: string) {
 export function DynoteEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
   // Initialize theme detection and management - automatically detects browser's preferred theme
   // and applies dark/light mode classes to the document root
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
   const marksDialogRef = useRef<HTMLDialogElement>(null);
@@ -582,7 +582,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
 
                     <div className="flex flex-col w-full">
                       <h2 className="font-semibold">{command.name}</h2>
-                      <p className="text-white/50 text-xs">{command.description}</p>
+                      <p className="text-muted-foreground text-xs">{command.description}</p>
                     </div>
                   </button>
                 </li>
@@ -648,7 +648,7 @@ export function DynoteEditor(props: { value?: string; editable?: boolean; onChan
 
                     <div className="flex flex-col w-full">
                       <h2 className="font-semibold">{command.name}</h2>
-                      <p className="text-white/50 text-xs">{command.description}</p>
+                      <p className="text-muted-foreground text-xs">{command.description}</p>
                     </div>
                   </button>
                 </li>

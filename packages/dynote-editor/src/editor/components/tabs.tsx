@@ -349,7 +349,7 @@ export const TabsNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentPr
               <span
                 contentEditable={false}
                 className={`
-                  ${isActive ? "text-white/90" : "text-white/70"}
+                  ${isActive ? "text-foreground" : "text-muted-foreground"}
                   ${editable ? "cursor-pointer hover:cursor-pointer hover:underline" : ""}
                   inline-block font-mono text-sm
                 `}
