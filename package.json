@@ -3,7 +3,7 @@
 	"scripts": {
 		"editor:build": "bun run --filter ./packages/we-editor build",
 		"playground:dev": "bun run --filter ./packages/we-playground dev",
-		"playground:build": "bun run --filter './packages/playground' build",
+		"playground:build": "bun run --filter './packages/we-playground' build",
 		"format": "biome format --write",
 		"lint": "biome lint"
 	},
