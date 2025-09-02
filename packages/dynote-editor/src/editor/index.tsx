@@ -65,17 +65,7 @@ function mdxLikeToProseMirror(markdown: string) {
   return htmlToProseMirror(html);
 }
 
-function htmlOrMdxLikeToProseMirror(htmlOrMarkdown: string) {
-  // Has gray matter, should be markdown
-  if (htmlOrMarkdown.startsWith("---")) {
-    return mdxLikeToProseMirror(htmlOrMarkdown);
-  }
-
-  // Default to markdown, I suppose
-  return mdxLikeToProseMirror(htmlOrMarkdown);
-}
-
-export function ProseMirrorEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
+export function DynoteEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const marksDialogRef = useRef<HTMLDialogElement>(null);
   const editorViewRef = useRef<EditorView | null>(null);
@@ -227,7 +217,7 @@ export function ProseMirrorEditor(props: { value?: string; editable?: boolean; o
             // Fallback to plain text
             const text = event.clipboardData.getData("text/plain");
             if (text) {
-              const fragment = htmlOrMdxLikeToProseMirror(text);
+              const fragment = mdxLikeToProseMirror(text);
               if (fragment) {
                 const topNode = view.state.schema.topNodeType.create(null, fragment);
                 view.dispatch(view.state.tr.replaceSelectionWith(topNode));
@@ -327,7 +317,7 @@ export function ProseMirrorEditor(props: { value?: string; editable?: boolean; o
   // Only re-initialize editor state when value prop changes (i.e., when a new file is loaded)
   useEffect(() => {
     if (props.value !== undefined) {
-      const fragment = props.value.length > 0 ? htmlOrMdxLikeToProseMirror(props.value) : Fragment.empty;
+      const fragment = props.value.length > 0 ? mdxLikeToProseMirror(props.value) : Fragment.empty;
       const topNode = schema.topNodeType.create(null, fragment);
 
       const newState = EditorState.create({

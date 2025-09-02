@@ -124,8 +124,7 @@ export const BreakNodeView = React.forwardRef<HTMLDivElement, NodeViewComponentP
           checkCaretProximity(viewRef.current);
         }
       }, 0);
-    },
-    [nodeProps, checkCaretProximity],
+    }
   );
 
   const handleSubmit = (e: React.FormEvent) => {

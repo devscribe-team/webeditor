@@ -2,6 +2,7 @@
 	"name": "dynote",
 	"scripts": {
 		"playground:dev": "bun run --filter ./packages/dynote-playground dev",
+		"build": "bun run --filter './packages/*' build",
 		"format": "biome format --write",
 		"lint": "biome lint"
 	},

@@ -1,7 +1,6 @@
 import { Info, Lightbulb, MessageSquareWarning, OctagonAlert, TriangleAlert } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import "../../callout.css";
 
 export type CalloutType = "info" | "warning" | "caution" | "important" | "tip";
 

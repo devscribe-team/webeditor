@@ -1,5 +1,5 @@
 "use client";
-
+// bun add @codemirror/lang-css @codemirror/lang-html @codemirror/lang-javascript @codemirror/lang-python @codemirror/lang-rust @codemirror/lang-sql @handlewithcare/react-prosemirror @uiw/codemirror-theme-github @uiw/codemirror-theme-tokyo-night @uiw/codemirror-theme-vscode @uiw/react-codemirror lucide-react prosemirror-inputrules prosemirror-model prosemirror-state react react-dom
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
@@ -14,7 +14,7 @@ import CodeMirror, { Prec } from "@uiw/react-codemirror";
 import { Check, ChevronDown, Copy, Square, SquareDashed } from "lucide-react";
 import { InputRule } from "prosemirror-inputrules";
 import { NodeSpec, Schema } from "prosemirror-model";
-import { Selection, EditorState, Transaction } from "prosemirror-state";
+import { EditorState, Selection, Transaction } from "prosemirror-state";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   DropdownMenu,
