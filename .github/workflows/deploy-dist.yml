@@ -16,16 +16,16 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Setup Bun
-              uses: oven-sh/setup-bun@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
               with:
-                  bun-version: latest
+                  node-version: latest
 
             - name: Install dependencies
-              run: bun install
+              run: npm install
 
             - name: Build editor
-              run: bun run editor:build
+              run: npm run editor:build
 
             - name: Deploy to dist branch
               uses: peaceiris/actions-gh-pages@v3

@@ -30,8 +30,8 @@ function App() {
 The editor automatically detects and applies your browser's preferred theme. You can also manually control the theme:
 
 ```tsx
-import { DynoteEditor, useTheme } from '@dynote/editor';
-import '@dynote/editor/styles';
+import { WebEditor, useTheme } from '@devscribe/webeditor';
+import '@devscribe/webeditor/styles';
 
 function App() {
   const { theme, resolvedTheme, setTheme } = useTheme();

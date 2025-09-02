@@ -14,7 +14,7 @@ function App() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="p-8 max-w-4xl mx-auto">
         <div className="mb-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Dynote Editor Playground</h1>
+          <h1 className="text-2xl font-bold">Devscribe Editor Playground</h1>
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">Theme:</span>
             <div className="flex rounded-lg border border-border overflow-hidden">
