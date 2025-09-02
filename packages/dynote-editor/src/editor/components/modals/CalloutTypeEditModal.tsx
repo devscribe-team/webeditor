@@ -10,32 +10,38 @@ const calloutTypes: Record<
     icon: React.ComponentType<{ className?: string }>;
     label: string;
     description: string;
+    iconColor: string;
   }
 > = {
   info: {
     icon: Info,
     label: "Note",
     description: "General information and notes",
+    iconColor: "text-blue-600",
   },
   warning: {
     icon: TriangleAlert,
     label: "Warning",
     description: "Important warnings and alerts",
+    iconColor: "text-yellow-600",
   },
   caution: {
     icon: OctagonAlert,
     label: "Caution",
     description: "Critical safety information",
+    iconColor: "text-red-600",
   },
   important: {
     icon: MessageSquareWarning,
     label: "Important",
     description: "Essential information to remember",
+    iconColor: "text-violet-600",
   },
   tip: {
     icon: Lightbulb,
     label: "Tip",
     description: "Helpful tips and suggestions",
+    iconColor: "text-green-600",
   },
 };
 
@@ -62,6 +68,22 @@ export function CalloutTypeEditModal({
     }
   }, [initialType, open]);
 
+  const calloutTypeEntries = Object.entries(calloutTypes) as [CalloutType, typeof calloutTypes[CalloutType]][];
+
+  const handleKeyNavigation = (e: React.KeyboardEvent) => {
+    const currentIndex = calloutTypeEntries.findIndex(([type]) => type === selectedType);
+
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % calloutTypeEntries.length;
+      setSelectedType(calloutTypeEntries[nextIndex][0]);
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prevIndex = currentIndex === 0 ? calloutTypeEntries.length - 1 : currentIndex - 1;
+      setSelectedType(calloutTypeEntries[prevIndex][0]);
+    }
+  };
+
   if (!open) return null;
 
   function handleSubmit() {
@@ -75,6 +97,8 @@ export function CalloutTypeEditModal({
     } else if (e.key === "Escape") {
       e.preventDefault();
       onCloseAction();
+    } else {
+      handleKeyNavigation(e);
     }
   }
 
@@ -85,14 +109,31 @@ export function CalloutTypeEditModal({
   }
 
   return ReactDOM.createPortal(
-    <div className="callout-modal-overlay" onClick={handleBackdropClick} onKeyDown={handleKeyDown} tabIndex={-1}>
-      <div className="callout-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="callout-modal-header">{modalTitle}</div>
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+      onClick={handleBackdropClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={-1}
+    >
+      <div
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 id="modal-title" className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {modalTitle}
+          </h2>
+        </div>
 
-        <div className="callout-modal-content">
-          <label className="callout-modal-label">Select callout type:</label>
-          <div className="callout-type-options">
-            {Object.entries(calloutTypes).map(([type, config]) => {
+        <div className="px-6 py-4">
+          <label id="callout-type-label" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+            Select callout type:
+          </label>
+          <div className="space-y-2" role="radiogroup" aria-labelledby="callout-type-label">
+            {calloutTypeEntries.map(([type, config]) => {
               const IconComponent = config.icon;
               const isSelected = selectedType === type;
               return (
@@ -100,14 +141,20 @@ export function CalloutTypeEditModal({
                   key={type}
                   type="button"
                   onClick={() => setSelectedType(type as CalloutType)}
-                  className={`callout-type-option ${isSelected ? "selected" : ""}`}
+                  role="radio"
+                  aria-checked={isSelected}
+                  className={`w-full flex items-center p-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                    isSelected
+                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-100"
+                      : "border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
+                  }`}
                 >
-                  <div className="callout-type-option-icon">
-                    <IconComponent />
+                  <div className="flex-shrink-0 mr-3">
+                    <IconComponent className={`w-5 h-5 ${config.iconColor}`} />
                   </div>
-                  <div className="callout-type-option-content">
-                    <div className="callout-type-option-name">{config.label}</div>
-                    <div className="callout-type-option-description">{config.description}</div>
+                  <div className="flex-1 text-left">
+                    <div className="font-medium">{config.label}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{config.description}</div>
                   </div>
                 </button>
               );
@@ -115,11 +162,19 @@ export function CalloutTypeEditModal({
           </div>
         </div>
 
-        <div className="callout-modal-footer">
-          <button type="button" onClick={onCloseAction} className="callout-modal-button cancel">
+        <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex justify-end space-x-3">
+          <button
+            type="button"
+            onClick={onCloseAction}
+            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
             Cancel
           </button>
-          <button type="button" onClick={handleSubmit} className="callout-modal-button primary">
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
             Apply
           </button>
         </div>
