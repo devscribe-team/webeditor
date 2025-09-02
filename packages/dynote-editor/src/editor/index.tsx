@@ -6,6 +6,7 @@ import { DOMParser, DOMSerializer, Fragment, Node } from "prosemirror-model";
 import { EditorState, Plugin, Selection } from "prosemirror-state";
 import type { EditorView } from "prosemirror-view";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTheme } from "../hooks/use-theme";
 import { AccordionNodeView, insertAccordion } from "./components/accordion";
 import { BadgeNodeView, insertBadge } from "./components/badge";
 import { BreakNodeView, insertBreak } from "./components/break";
@@ -66,6 +67,10 @@ function mdxLikeToProseMirror(markdown: string) {
 }
 
 export function DynoteEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
+  // Initialize theme detection and management - automatically detects browser's preferred theme
+  // and applies dark/light mode classes to the document root
+  const { theme } = useTheme();
+
   const dialogRef = useRef<HTMLDialogElement>(null);
   const marksDialogRef = useRef<HTMLDialogElement>(null);
   const editorViewRef = useRef<EditorView | null>(null);
