@@ -1,5 +1,5 @@
 {
-	"name": "dynote",
+	"name": "@dynote/editor",
 	"version": "0.1.0",
 	"description": "A rich text editor library for React with markdown support and custom components",
 	"author": "",
@@ -24,7 +24,6 @@
 		"build:js": "bun build src/index.ts --outdir dist --format esm --minify --splitting --target browser",
 		"build:types": "tsc --emitDeclarationOnly --outDir dist",
 		"build:css": "cp src/ui/callout.css dist/index.css",
-		"playground:dev": "bun ./src/index.tsx",
 		"dev": "bun run build --watch",
 		"format": "biome format --write",
 		"lint": "biome lint",
@@ -65,15 +64,6 @@
 		"rich-text",
 		"markdown",
 		"prosemirror",
-		"wysiwyg",
-		"next.js"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/yourusername/dynote.git"
-	},
-	"bugs": {
-		"url": "https://github.com/yourusername/dynote/issues"
-	},
-	"homepage": "https://github.com/yourusername/dynote#readme"
+		"wysiwyg"
+	]
 }

@@ -1,0 +1,11 @@
+{
+	"name": "dynote",
+	"scripts": {
+		"playground:dev": "bun run --filter ./packages/dynote-playground dev",
+		"format": "biome format --write",
+		"lint": "biome lint"
+	},
+	"workspaces": [
+		"packages/*"
+	]
+}

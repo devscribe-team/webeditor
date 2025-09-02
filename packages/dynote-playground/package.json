@@ -1,0 +1,15 @@
+{
+	"name": "@dynote/playground",
+	"version": "0.1.0",
+	"description": "",
+	"author": "",
+	"type": "module",
+	"scripts": {
+		"dev": "bun ./src/index.tsx"
+	},
+	"dependencies": {
+		"@dynote/editor": "workspace:*",
+		"bun-plugin-tailwind": "^0.0.15",
+		"tailwindcss": "^4.1.12"
+	}
+}
