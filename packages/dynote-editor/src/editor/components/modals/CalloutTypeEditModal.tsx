@@ -116,20 +116,20 @@ export function CalloutTypeEditModal({
       tabIndex={-1}
     >
       <div
-        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-hidden"
+        className="bg-card rounded-lg shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
       >
-        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 id="modal-title" className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <div className="px-6 py-4 border-b border-border">
+          <h2 id="modal-title" className="text-lg font-semibold text-card-foreground">
             {modalTitle}
           </h2>
         </div>
 
         <div className="px-6 py-4">
-          <label id="callout-type-label" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          <label id="callout-type-label" className="block text-sm font-medium text-muted-foreground mb-3">
             Select callout type:
           </label>
           <div className="space-y-2" role="radiogroup" aria-labelledby="callout-type-label">
@@ -143,10 +143,10 @@ export function CalloutTypeEditModal({
                   onClick={() => setSelectedType(type as CalloutType)}
                   role="radio"
                   aria-checked={isSelected}
-                  className={`w-full flex items-center p-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  className={`w-full flex items-center p-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${
                     isSelected
-                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-100"
-                      : "border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
+                      ? "border-primary bg-accent text-accent-foreground"
+                      : "border-border hover:border-muted-foreground hover:bg-accent text-card-foreground"
                   }`}
                 >
                   <div className="flex-shrink-0 mr-3">
@@ -154,7 +154,7 @@ export function CalloutTypeEditModal({
                   </div>
                   <div className="flex-1 text-left">
                     <div className="font-medium">{config.label}</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">{config.description}</div>
+                    <div className="text-sm text-muted-foreground">{config.description}</div>
                   </div>
                 </button>
               );
@@ -162,18 +162,18 @@ export function CalloutTypeEditModal({
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex justify-end space-x-3">
+        <div className="px-6 py-4 border-t border-border flex justify-end space-x-3">
           <button
             type="button"
             onClick={onCloseAction}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="px-4 py-2 text-sm font-medium text-secondary-foreground bg-secondary border border-border rounded-md hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleSubmit}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="px-4 py-2 text-sm font-medium text-primary-foreground bg-primary border border-transparent rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
           >
             Apply
           </button>

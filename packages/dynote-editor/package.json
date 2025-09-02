@@ -19,8 +19,8 @@
 	],
 	"scripts": {
 		"build:css": "tailwindcss -i ./src/styles.css -o ./dist/tailwind.tmp.css --minify && cat ./dist/index.css ./dist/tailwind.tmp.css > ./dist/index.combined.css && mv ./dist/index.combined.css ./dist/index.css && rm ./dist/tailwind.tmp.css",
-		"build": "bunx tsdown && bun build:css",
-		"prepublishOnly": "bun run build"
+		"build": "npx tsdown && npm run build:css",
+		"prepublishOnly": "npm run build"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0",
@@ -74,7 +74,8 @@
 		"radix-ui": "^1.4.3",
 		"react-reconciler": "^0.32.0",
 		"sonner": "^2.0.7",
-		"tailwind-merge": "^3.3.1"
+		"tailwind-merge": "^3.3.1",
+		"tw-animate-css": "^1.3.7"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
