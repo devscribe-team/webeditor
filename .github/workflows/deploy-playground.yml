@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages
+name: Build and Deploy Playground to GitHub Pages
 
 on:
     push:
