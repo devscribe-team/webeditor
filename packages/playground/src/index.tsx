@@ -1,5 +1,5 @@
 /* @refresh reload */
-import { WebEditor, useTheme } from '@devscribe/webeditor';
+import { WebEditor, useTheme } from '@devscribe-team/webeditor';
 
 function App() {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -71,7 +71,7 @@ function App() {
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import '@devscribe/webeditor/styles';
+import '@devscribe-team/webeditor/styles';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

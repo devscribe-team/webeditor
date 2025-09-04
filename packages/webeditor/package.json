@@ -1,8 +1,14 @@
 {
-	"name": "@devscribe/webeditor",
-	"version": "0.1.0",
+	"name": "@devscribe-team/webeditor",
+	"license": "MIT",
+	"version": "0.1.1",
+	"contributors": [
+		"David Cruz <david@codebycruz.com>",
+		"Darryl James Cruz",
+		"Sam Solano"
+	],
+	"readme": "../../README.md",
 	"description": "A rich text editor library for React with markdown support and custom components",
-	"author": "",
 	"type": "module",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -23,7 +29,8 @@
 	"scripts": {
 		"build:css": "tailwindcss -i ./src/styles.css -o ./dist/tailwind.tmp.css --minify && cat ./dist/index.css ./dist/tailwind.tmp.css > ./dist/index.combined.css && mv ./dist/index.combined.css ./dist/index.css && rm ./dist/tailwind.tmp.css",
 		"build": "npx tsdown && npm run build:css && cp ./src/styles.css.d.ts ./dist/index.css.d.ts",
-		"prepublishOnly": "npm run build"
+		"prepublishOnly": "npm run build",
+		"publish": "npm publish --access public"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0",

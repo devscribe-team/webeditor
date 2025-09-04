@@ -1,7 +1,8 @@
 {
-	"name": "devscribe",
+	"name": "devscribe-team",
 	"scripts": {
 		"editor:build": "npm run --workspace ./packages/webeditor build",
+		"editor:publish": "npm run --workspace ./packages/webeditor publish",
 		"playground:dev": "npm run --workspace ./packages/playground dev",
 		"playground:build": "npm run --workspace './packages/playground' build",
 		"format": "biome format --write",
