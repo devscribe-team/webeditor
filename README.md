@@ -1,4 +1,4 @@
-# @devscribe-team/webeditor
+# @devscribe-team/webeditor [![npm](https://img.shields.io/npm/v/%40devscribe-team%2Fwebeditor)](https://www.npmjs.com/package/@devscribe-team/webeditor) [![mit license](https://img.shields.io/github/license/devscribe-team/webeditor)](https://opensource.org/licenses/MIT) [![Deploy Playground](https://img.shields.io/website?url=https%3A%2F%2Fdevscribe-team.github.io%2Fwebeditor%2F&label=Playground)](https://devscribe-team.github.io/webeditor/)
 
 A completely dynamic, JSX-based rich text editor powered by [ProseMirror](https://prosemirror.net/).
 
