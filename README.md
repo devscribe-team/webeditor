@@ -52,13 +52,6 @@ function App() {
 }
 ```
 
-The theme system:
-
-- **Auto mode**: Automatically follows your system's dark/light preference
-- **Light/Dark mode**: Forces a specific theme
-- **Persistent**: Your theme choice is saved to localStorage
-- **Reactive**: Automatically updates when system preference changes (in auto mode)
-
 ## Contributors
 
 The work on the project started from [Devscribe](https://www.devscribeai.com/) and was thankfully able to be open sourced thanks to their support.

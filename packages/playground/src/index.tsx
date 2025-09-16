@@ -62,7 +62,8 @@ function App() {
             )}
           </p>
         </div>
-        <WebEditor />
+
+        <WebEditor plugins={ } />
       </div>
     </div>
   );

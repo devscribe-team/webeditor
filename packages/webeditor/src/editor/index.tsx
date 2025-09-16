@@ -39,6 +39,7 @@ import {
 import { createTooltipClickPlugin, removeTooltipMark, updateTooltipMark } from "./utils/tooltip-click-plugin";
 import "./index.css";
 import { preprocessMarkdownToHTML } from "./preprocessMarkdown";
+import { EditorContext, EditorPlugin } from "./plugins";
 
 function proseMirrorToHTML(doc: Node) {
   const serializer = DOMSerializer.fromSchema(schema);
@@ -66,10 +67,19 @@ function mdxLikeToProseMirror(markdown: string) {
   return htmlToProseMirror(html);
 }
 
-export function WebEditor(props: { value?: string; editable?: boolean; onChange?: (doc: string) => void }) {
+export function WebEditor(props: { value?: string; plugins?: EditorPlugin[]; editable?: boolean; onChange?: (doc: string) => void }) {
   // Initialize theme detection and management - automatically detects browser's preferred theme
   // and applies dark/light mode classes to the document root
   const { theme, resolvedTheme } = useTheme();
+
+  const editorContext = useMemo(() => new EditorContext(), []);
+
+  useEffect(() => {
+
+    for (const plugin of props.plugins ?? []) {
+      editorContext.registerPlugin(plugin);
+    }
+  }, [props.plugins]);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
   const marksDialogRef = useRef<HTMLDialogElement>(null);
